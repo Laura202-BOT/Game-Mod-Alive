@@ -228,11 +228,11 @@ stateResult_t rvWeaponMachinegun::State_Fire ( const stateParms_t& parms ) {
 		case STAGE_INIT:
 			if ( wsfl.zoom ) {
 				nextAttackTime = gameLocal.time + (altFireRate * owner->PowerUpModifier ( PMOD_FIRERATE ));
-				Attack ( true, 1, spreadZoom, 0, 1.0f );
+				Attack ( true, 3, spreadZoom, 0, 0.08f );
 				fireHeld = true;
 			} else {
 				nextAttackTime = gameLocal.time + (fireRate * owner->PowerUpModifier ( PMOD_FIRERATE ));
-				Attack ( false, 1, spread, 0, 1.0f );
+				Attack ( false, 5, 8.0f, 0, 0.6f);
 			}
 			PlayAnim ( ANIMCHANNEL_ALL, "fire", 0 );	
 			return SRESULT_STAGE ( STAGE_WAIT );
@@ -323,5 +323,5 @@ stateResult_t rvWeaponMachinegun::State_Flashlight ( const stateParms_t& parms )
 			SetState ( "Idle", 4 );
 			return SRESULT_DONE;
 	}
-	return SRESULT_ERROR;
+	return SRESULT_ERROR;  
 }
